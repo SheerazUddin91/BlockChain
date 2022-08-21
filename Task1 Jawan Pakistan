@@ -1,0 +1,37 @@
+
+//SPDX-License-Identifier:MIT
+
+pragma solidity ^0.8.15;
+
+contract StringHello{
+
+    //Task 1.. Print Hello Solidity.
+
+    string  public strng1 = "Hello Solidity";
+    //One way to just public the string strng = "Hello Solidity";
+    string strng = "Hello Solidity";
+    //Second way to print, to creat funciton.
+    function print () public view returns (string memory){
+        return strng;
+    }
+    }
+
+
+contract StateVariableReturn {
+
+    uint number = 10;
+
+    function StateVariable () public view returns (uint){
+        return number;
+    }
+    }
+
+
+contract LocalVariable {
+
+    function LocalViable () public pure returns (uint){
+        uint Local = 20;
+        return Local;
+    }
+
+}
