@@ -1,0 +1,68 @@
+
+pragma solidity ^0.8.15;
+//SPDX-License-Identifier:MIT
+
+contract Object2Task1{
+
+    uint value;
+
+    function setTask1(uint  number) public {
+        value=number;
+    }
+    function getTask1() public view returns (uint){
+        return value;
+    }
+}
+
+contract Object2Task2 is Object2Task1{
+    uint a;
+    uint b;
+    
+    function ValuesTask2 (uint valueA, uint valueB) public {
+        a = valueA;
+        b = valueB;
+    }
+    function EvaluteTask2 ()  view public returns (uint) {
+        uint sum = a+b;
+        uint sub = a-b;
+        uint diff = sum-sub;
+        
+        return diff;
+    }
+}
+
+contract ObjectTask3 is Object2Task2{
+    int c;
+
+    function ValueTask3 (int a) public {
+
+        require (a > 0, "Input Value should be greater than 0");
+        c=a;
+        }
+
+    function find () public view returns (int){
+       
+        int remainder = c % 3;
+        return remainder;
+    }
+    
+}
+
+contract Object2Task4 is ObjectTask3 {
+
+    int d;
+    int avg;
+
+    function ValuesTask4(int a, int b, int c) public {
+        require (a > 0, "Value should be greater than 0");
+        require (b > 0, "Value should be greater than 0");
+        require (c > 0, "Value should be greater than 0");
+
+        d = a+b+c;
+        avg = d/3;
+    }
+
+    function average ()public view returns (int){
+        return avg;
+    }
+}
