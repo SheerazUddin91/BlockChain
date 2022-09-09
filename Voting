@@ -1,0 +1,42 @@
+//SPDX-License-Identifier: Mit
+
+pragma solidity ^0.8.13;
+
+
+contract Owner {
+
+    address owner;
+
+    constructor () {
+        owner = msg.sender;
+    }
+    modifier onlyOwner {
+        require (owner == msg.sender, "You are not Admin");
+        _;
+    }
+}
+
+
+contract whiteList is Owner {
+
+mapping (address => bool) public whiteListMap;
+
+function votersList (address voterAddress) public onlyOwner returns  (bool){
+
+   return whiteListMap[voterAddress] = true; 
+
+}
+
+}
+
+
+contract voting is whiteList {
+
+uint public votes = 0;
+
+function castVote () public returns (uint){
+    require (whiteListMap[msg.sender], "You are not a Voter");
+    return votes += 1;
+}
+
+}
